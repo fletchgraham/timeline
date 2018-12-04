@@ -19,7 +19,9 @@ int ep(int px) {
   // 2) flip everything and undo the zoom.
   // 3) undo the offset
   
-  int ep = (int)(-(float)(px - height/2) * z + off);
+  float px_float = px;
+  
+  int ep = round((-(px_float - height/2) * z + off));
   return ep;
 }
 
@@ -31,6 +33,6 @@ int px(int ep) {
   // 3) translate by half the window height to move the focus to center
   
   int px;
-  px = (int)(-(float)(ep - off) / z) + height/2;
+  px = round((-((float)(ep - off)) / z) + height/2);
   return px;
 }
