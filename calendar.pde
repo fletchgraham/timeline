@@ -25,28 +25,26 @@ void draw_timeline() {
       line(0, px(i), width, px(i));
     }
 
-    if (z < 100) {
-      // hour text:
-      textSize(font_size);
-      fill(150);
-      text(ft.format(date), 10, px(i));
-    }
-
     if (day) {
+      Date yesterday = new Date(date.getTime()-1000);
       // draw fat line to mark new day:
-      strokeWeight(font_size);
+      strokeWeight(5);
       stroke(35);
-      line(0, px(i)-font_size/2, width, px(i)-font_size/2);
-
-      // draw skinny line to mark exactly where day begins:
-      strokeWeight(1);
-      stroke(30);
       line(0, px(i), width, px(i));
 
       // date text:
-      textSize(font_size);
+      textSize(em);
       fill(150);
-      text(date.toString().substring(0, 10), 10, px(i));
+      textAlign(RIGHT, TOP);
+      text(yesterday.toString().substring(0, 10), width-10, px(i));
+    }
+    
+    if (z < 120) {
+      // hour text:
+      textAlign(LEFT, BASELINE);
+      textSize(em*.8);
+      fill(150);
+      text(ft.format(date), 10, px(i));
     }
   }
 }

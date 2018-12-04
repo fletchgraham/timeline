@@ -4,7 +4,7 @@ JSONObject model;
 
 Frames frames;
 JSONObject prefs;
-int font_size = 8;
+int em = 8;
 ColorPicker color_picker;
 boolean show_spectrum;
 boolean editingClient;
@@ -19,7 +19,7 @@ void setup() {
 
   try {
     prefs = loadJSONObject("data/prefs.json");
-    font_size = prefs.getInt("font_size");
+    em = prefs.getInt("em");
   }
   catch (Exception e) {
     prefs = new JSONObject();
@@ -42,15 +42,15 @@ void setup() {
   color_picker = new ColorPicker();
   
   txt1 = new TextBox("testing");
-  txt1.setDims(20, 40, 300, 35);
 }
 
 void draw() {
-  background(40);
+  background(50);
   draw_timeline();
   frames.render();
   draw_debug();
   if (editingClient || editingProject){
+    txt1.setDims(width/2, height/4, width*.8);
     txt1.render();
   }
   

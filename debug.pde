@@ -4,12 +4,13 @@ void draw_debug() {
   
   int margin = 20;
   fill(255);
+  textSize(em);
   textAlign(RIGHT);
-  //text("zoom: " + z, width-margin, height - font_size * 4);
-  //text("offset: " + off, width-margin, height - font_size * 3);
-  //text("mouse timestamp: " + ep(mouseY), width-margin, height - font_size * 2);
-  text("Project Duration: " + frames.projectHours(), width-margin, height - font_size * 2); 
+  //text("zoom: " + z, width-margin, height - em * 4);
+  //text("offset: " + off, width-margin, height - em * 3);
+  //text("mouse timestamp: " + ep(mouseY), width-margin, height - em * 2);
+  text("Project Duration: " + nf(frames.projectHours(), 1, 2), width-margin, height - em * 2); 
   
   Date mouse = new Date((long)ep(mouseY) * 1000);
-  text("Mouse Datetime: " + mouse.toString(), width-margin, height - font_size);
+  text("Cursor: " + mouse.toString().substring(4,16), width-margin, height - em);
 }

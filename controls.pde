@@ -105,10 +105,10 @@ void keyPressed() {
   if (editingClient || editingProject) {
     txt1.update(key);
   } else {
-    if (key == '=' && font_size != 32) {
-      font_size++;
-    } else if (key == '-' && font_size != 5) {
-      font_size--;
+    if (key == '=' && em != 32) {
+      em++;
+    } else if (key == '-' && em != 5) {
+      em--;
     } else if (key == DELETE || key == BACKSPACE) {
       frames.deleteSelected();
       frames.saveJSON(saveLocation);
@@ -124,7 +124,7 @@ void keyReleased() {
     show_spectrum = false;
   }
   if (key == '=' || key == '-') {
-    prefs.setInt("font_size", font_size);
+    prefs.setInt("em", em);
     saveJSONObject(prefs, "data/prefs.json", "indent=1");
   }
 }

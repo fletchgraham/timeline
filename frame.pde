@@ -83,10 +83,10 @@ class Frame {
   }
 
   void render() {
-    float pad = font_size/2;
+    float pad = em/2;
     if (selected) {
       stroke(255);
-      strokeWeight(font_size/8);
+      strokeWeight(em/8);
     } else {
       noStroke();
     }
@@ -94,10 +94,11 @@ class Frame {
     rectMode(CORNERS); 
     rect(x1*width, px(start), x2*width, px(stop));
 
-    if ((tall() > font_size * 2 + pad * 2) || (selected)) {
+    if ((tall() > em * 2 + pad * 2) || (selected)) {
       fill(255);
       textAlign(LEFT);
-      text(client, x1 * width + pad, px(start)-font_size-pad);
+      textSize(em);
+      text(client, x1 * width + pad, px(start)-em-pad);
       text(project, x1 * width + pad, px(start)-pad);
     }
   }
