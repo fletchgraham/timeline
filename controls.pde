@@ -14,8 +14,8 @@ String dragging = "none";
 // grab navigation:
 void mousePressed() {
   if (editingClient || editingProject) {
-   editingClient = false;
-   editingProject = false;
+    editingClient = false;
+    editingProject = false;
   }
   if (mouseButton == RIGHT) {
     frames.newFrame(mouseX, mouseY, mouseX, mouseY);
@@ -28,27 +28,22 @@ void mousePressed() {
       Frame f = frames.frames.get(i);
       if (f.over(mouseX, mouseY).equals("none")) {
         f.selected = false;
-      } 
-      else { 
+      } else { 
         f.selected = true;
         dragging = f.over(mouseX, mouseY);
       }
-      
     }
-    
-    
   }
 }
 
 void mouseDragged() {
   Frame f = frames.selection();
-  
+
   if (f==null || mouseButton == CENTER) {
     d=(int)((float)(mouseY-b)*z);
     off = a + d;
-    
   } else if (mouseButton == RIGHT) {
-      f.update_corner(mouseX, mouseY); 
+    f.update_corner(mouseX, mouseY);
   } else {
     if (dragging.equals("top")) {
       f.stop = ep(mouseY);
@@ -67,9 +62,9 @@ void mouseDragged() {
 
 void mouseReleased() {
   for (int i = 0; i < frames.frames.size(); i++) {
-      Frame f = frames.frames.get(i);
-      f.flipflop();
-    }
+    Frame f = frames.frames.get(i);
+    f.flipflop();
+  }
   if (mouseButton == RIGHT) {
     frames.saveJSON(saveLocation);
   }
@@ -82,23 +77,14 @@ void mouseReleased() {
 // zooom:
 void mouseWheel(MouseEvent event) {
   int s = event.getCount();
-  println(s);
-
-  // scrolling up = zooming in:
-  if (s <= 0 && z > 10) {
-    z = z + s*5;
-  } 
-  // scrolling down = zooming out:
-  else if (s > 0 && z < 1200) {
-    z = z + s*5;
-  }
+  z = z + s*.1*z;
 }
 
 void handleEdits() {
-  
+
   Frame f = frames.selection();
-  
-  if (!(editingClient || editingProject)){
+
+  if (!(editingClient || editingProject)) {
     editingClient = true;
     txt1.label = "Edit Client:";
     txt1.textbox = f.client;
