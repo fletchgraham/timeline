@@ -45,6 +45,13 @@ void setup() {
 }
 
 void draw() {
+  
+  if (z < 10) {
+    z = 10;
+  } else if (z > 1200) {
+    z = 1200;
+  }
+  
   background(50);
   draw_timeline();
   frames.render();

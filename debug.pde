@@ -6,7 +6,7 @@ void draw_debug() {
   fill(255);
   textSize(em);
   textAlign(RIGHT);
-  //text("zoom: " + z, width-margin, height - em * 4);
+  text("zoom: " + z, width-margin, height - em * 4);
   //text("offset: " + off, width-margin, height - em * 3);
   //text("mouse timestamp: " + ep(mouseY), width-margin, height - em * 2);
   text("Project Duration: " + nf(frames.projectHours(), 1, 2), width-margin, height - em * 2); 

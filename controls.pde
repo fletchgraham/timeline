@@ -63,14 +63,15 @@ void mouseReleased() {
 // zooom:
 void mouseWheel(MouseEvent event) {
   int s = event.getCount();
+  println(s);
 
   // scrolling up = zooming in:
-  if (s < 0 && z > 10) {
-    z = z * .9;
+  if (s <= 0 && z > 10) {
+    z = z + s;
   } 
   // scrolling down = zooming out:
-  else if (s >= 0 && z < 1200) {
-    z = z * 1.1;
+  else if (s > 0 && z < 1200) {
+    z = z + s;
   }
 }
 
