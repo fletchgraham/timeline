@@ -9,6 +9,8 @@ float z = 100.00;
 //save location
 String saveLocation = "data/frames.json";
 
+String dragging = "none";
+
 // grab navigation:
 void mousePressed() {
   if (editingClient || editingProject) {
@@ -24,37 +26,54 @@ void mousePressed() {
   if (mouseButton == LEFT) {
     for (int i = 0; i < frames.frames.size(); i++) {
       Frame f = frames.frames.get(i);
-      if (f.over(mouseX, mouseY)) {
-        f.selected = true;
-      } else { 
+      if (f.over(mouseX, mouseY).equals("none")) {
         f.selected = false;
+      } 
+      else { 
+        f.selected = true;
+        dragging = f.over(mouseX, mouseY);
       }
+      
     }
+    
+    
   }
 }
 
 void mouseDragged() {
-
-  if (mouseButton == RIGHT) {
-    for (int i = 0; i < frames.frames.size(); i++) {
-      Frame f = frames.frames.get(i);
-      if (f.selected)
-        f.update_corner(mouseX, mouseY);
-    }
-  } else {
+  Frame f = frames.selection();
+  
+  if (f==null || mouseButton == CENTER) {
     d=(int)((float)(mouseY-b)*z);
     off = a + d;
+    
+  } else if (mouseButton == RIGHT) {
+      f.update_corner(mouseX, mouseY); 
+  } else {
+    if (dragging.equals("top")) {
+      f.stop = ep(mouseY);
+    }
+    if (dragging.equals("left")) {
+      f.x1 = (float)mouseX/width;
+    }
+    if (dragging.equals("right")) {
+      f.x2 = (float)mouseX/width;
+    }
+    if (dragging.equals("bottom")) {
+      f.start = ep(mouseY);
+    }
   }
 }
 
 void mouseReleased() {
-  if (mouseButton == RIGHT) {
-    for (int i = 0; i < frames.frames.size(); i++) {
+  for (int i = 0; i < frames.frames.size(); i++) {
       Frame f = frames.frames.get(i);
-      if (f.selected) {
-        f.flipflop();
-      }
+      f.flipflop();
     }
+  if (mouseButton == RIGHT) {
+    frames.saveJSON(saveLocation);
+  }
+  if (mouseButton == LEFT && frames.selection() != null) {
     frames.saveJSON(saveLocation);
   }
 }
@@ -67,11 +86,11 @@ void mouseWheel(MouseEvent event) {
 
   // scrolling up = zooming in:
   if (s <= 0 && z > 10) {
-    z = z + s;
+    z = z + s*5;
   } 
   // scrolling down = zooming out:
   else if (s > 0 && z < 1200) {
-    z = z + s;
+    z = z + s*5;
   }
 }
 

@@ -12,6 +12,10 @@ boolean editingProject;
 TextBox txt1;
 
 void setup() {
+  size(600, 800);
+  //pixelDensity(displayDensity());
+  surface.setResizable(true);
+  
   editingClient = false;
   editingProject = false;
   show_spectrum = false;
@@ -25,10 +29,6 @@ void setup() {
     prefs = new JSONObject();
     println("no pref file.");
   }
-
-  size(600, 800);
-  //pixelDensity(displayDensity());
-  surface.setResizable(true);
 
   frames = new Frames();
   try {
@@ -45,7 +45,7 @@ void setup() {
 }
 
 void draw() {
-  
+  println(mouseX/width);
   if (z < 10) {
     z = 10;
   } else if (z > 1200) {

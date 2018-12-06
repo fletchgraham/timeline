@@ -42,13 +42,27 @@ class Frame {
     s = (int)saturation(col);
     b = (int)brightness(col);
   }
-
-  boolean over(int x, int y) {
-    boolean over = false;
-    if ((x1*width < x && x < x2*width) && (px(stop) < y && y < px(start))) {
-      over = true;
+  
+  String over(int x, int y) {
+    int thresh = 5;
+    if ((x1*width < x && x < x2*width) && (px(stop)-thresh < y && y < px(stop)+thresh)) {
+      return "top";
     }
-    return over;
+    else if ((x1*width < x && x < x2*width) && (px(start)-thresh < y && y < px(start)+thresh)) {
+      return "bottom";
+    }
+    else if ((x1*width-thresh < x && x < x1*width+thresh) && (px(stop) < y && y < px(start))) {
+      return "left";
+    }
+    else if ((x2*width-thresh < x && x < x2*width+thresh) && (px(stop) < y && y < px(start))) {
+      return "right";
+    }
+    else if ((x1*width < x && x < x2*width) && (px(stop) < y && y < px(start))) {
+      return "middle";
+    }
+    else {
+      return "none";
+    }
   }
 
   void flipflop() {
