@@ -28,7 +28,11 @@ class Frames {
   }
 
   void loadColors(String location) {
+    try {
     colors = loadJSONObject(location);
+    }
+    catch (Exception e) {
+    }
   }
 
   void updateColors() {
