@@ -100,13 +100,13 @@ class Frame {
     float pad = em/2;
     if (selected) {
       stroke(255);
-      strokeWeight(em/8);
+      strokeWeight(1);
     } else {
       noStroke();
     }
     fill(h, s, b);
     rectMode(CORNERS); 
-    rect(x1*width, px(start), x2*width, px(stop));
+    rect(x1*width, px(start), x2*width, px(stop), em/2);
 
     if ((tall() > em * 2 + pad * 2) || (selected)) {
       fill(255);

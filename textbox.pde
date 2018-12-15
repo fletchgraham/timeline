@@ -18,11 +18,10 @@ class TextBox {
   }
 
   void render() {
-    stroke(255);
-    strokeWeight(em/8);
-    fill(20);
+    noStroke();
     rectMode(CENTER);
-    rect(x, y, w, em*2);
+    fill(20);
+    rect(x, y, w, em*2, em/2);
     textAlign(CENTER, CENTER);
     fill(255);
     text(textbox, x, y - em/4);

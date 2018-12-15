@@ -124,14 +124,14 @@ void keyPressed() {
     } else if (key == DELETE || key == BACKSPACE) {
       frames.deleteSelected();
       frames.saveJSON(saveLocation);
-    } else if (keyCode == 17) {
+    } else if (keyCode == ALT) {
       show_spectrum = true;
     }
   }
 }
 
 void keyReleased() {
-  if (keyCode == 17) {
+  if (keyCode == ALT) {
     frames.saveColors("data/colors.json");
     show_spectrum = false;
   }
