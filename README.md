@@ -8,7 +8,7 @@ Draw out blocks of time (called frames) on an infinite vertical timeline. Label 
 - Right click and drag to create new frames.
 - Left click a frame to select it
 - Scale a frame by left click and dragging its sides.
-- Hold control with a frame selected to bring up a color picker, this will assign a color to all frames with the same client.
+- Hold alt with a frame selected to bring up a color picker, this will assign a color to all frames with the same client.
 - Press enter with a frame selected to edit the client, hit enter again to edit the project.
 - Left click and drag empty space to pan or scrub the timeline.
 - Scroll to zoom.
