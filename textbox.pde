@@ -11,7 +11,7 @@ class TextBox {
     if (k != ENTER) {
       if ( k == BACKSPACE && textbox.length() > 0) {
         textbox = textbox.substring(0, textbox.length() - 1);
-      } else if (textbox.length() < 30) {
+      } else if (textbox.length() < 30 && k != SHIFT) {
         textbox = textbox + k;
       }
     }

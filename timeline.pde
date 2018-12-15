@@ -9,6 +9,7 @@ ColorPicker color_picker;
 boolean show_spectrum;
 boolean editingClient;
 boolean editingProject;
+boolean first = true;
 TextBox txt1;
 
 void setup() {
@@ -45,7 +46,6 @@ void setup() {
 }
 
 void draw() {
-  println(mouseX/width);
   if (z < 10) {
     z = 10;
   } else if (z > 1200) {

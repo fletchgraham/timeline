@@ -88,6 +88,7 @@ void handleEdits() {
     editingClient = true;
     txt1.label = "Edit Client:";
     txt1.textbox = f.client;
+    first = true;
   } else if (editingClient) {
     editingClient = false;
     frames.selection().client = txt1.textbox;
@@ -95,6 +96,7 @@ void handleEdits() {
     txt1.label = "Edit Project:";
     txt1.textbox = f.project;
     editingProject = true;
+    first = true;
   } else if (editingProject) {
     editingProject = false;
     f.project = txt1.textbox;
@@ -108,7 +110,11 @@ void keyPressed() {
     handleEdits();
   }
 
-  if (editingClient || editingProject) {
+  else if (editingClient || editingProject) {
+    if (first) {
+       txt1.textbox = "";
+       first = false;
+    }
     txt1.update(key);
   } else {
     if (key == '=' && em != 32) {
