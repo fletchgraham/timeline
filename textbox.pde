@@ -20,7 +20,7 @@ class TextBox {
   void render() {
     noStroke();
     rectMode(CENTER);
-    fill(20);
+    fill(35);
     rect(x, y, w, em*2, em/2);
     textAlign(CENTER, CENTER);
     fill(255);

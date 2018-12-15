@@ -14,7 +14,7 @@ TextBox txt1;
 
 void setup() {
   size(600, 800);
-  pixelDensity(displayDensity());
+  //pixelDensity(displayDensity());
   surface.setResizable(true);
   
   editingClient = false;
