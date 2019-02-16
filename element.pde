@@ -1,7 +1,5 @@
 class Element {
   UI parent;
-  int row = 0;
-  int col = 0;
 
   float x = 10;
   float y = 10;
@@ -40,14 +38,13 @@ class Element {
   void render() {
 
     if (mouse_over() == null) {
-      fill(0);
+      noFill();
     } else {
       fill(150);
     }
-    stroke(255);
-    strokeWeight(1);
+    noStroke();
     rectMode(CORNER);
-    rect(x, y, w, h);
+    rect(x, y, w, h, em/2);
     textAlign(CENTER, CENTER);
     fill(255);
     text(label, x, y, w, h);

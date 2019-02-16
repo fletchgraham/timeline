@@ -9,17 +9,23 @@ class UI {
   
   void style() {
      margin = 16;
-     w = 200;
-     x = width - 2*margin - w;
-     y = 0;
+     w = width/3;
+     x = width - w - margin;
+     y = margin;
      line_height = 2*em;
   }
 
   void render() {
     style();
+    h = (margin + line_height) * elements.size() + margin;
+    rectMode(CORNER);
+    fill(20);
+    strokeWeight(1);
+    stroke(255);
+    rect(x, y, w, h, em/2);
     for (int i = 0; i < elements.size(); i++) {
       Element elem = elements.get(i);
-      elem.place(x + margin, margin + (line_height + margin)*i, w, line_height);
+      elem.place(x + margin, y + margin + (line_height + margin)*i, w-2*margin, line_height);
       elem.render();
     }
   }
