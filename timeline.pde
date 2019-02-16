@@ -15,7 +15,7 @@ TextBox txt1;
 
 // initiate UI:
 UI ui;
-Element test_element;
+Element client_indicator;
 
 void setup() {
   size(600, 800);
@@ -51,8 +51,8 @@ void setup() {
   
   // create UI:
   ui = new UI();
-  test_element = new Element(ui);
-  test_element.place(width - 216, 16, 200, 50);
+  client_indicator = new Element(ui);
+  client_indicator.place(width - 216, 16, 200, 50);
 }
 
 void draw() {
@@ -72,13 +72,16 @@ void draw() {
   }
   
   // render UI:
-  test_element.place(width - 216, 16, 200, 50);
+  client_indicator.place(width - 216, 16, 200, 50);
+  Frame f = frames.selection();
+  if (f != null) {
+    client_indicator.set_label(frames.selection().client);
   ui.render();
+  }
   
   // pick color
   if (show_spectrum) {
     color_picker.render(10, 10, 400, 400);
-    Frame f = frames.selection();
     try {
       frames.mapColor(f.client, get(mouseX, mouseY));
     } 

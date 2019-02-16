@@ -7,6 +7,8 @@ class Element {
   float y = 10;
   float w = 100;
   float h = 100;
+  
+  String label = "";
 
   Element(UI parent_) {
     parent = parent_;
@@ -18,6 +20,10 @@ class Element {
     y = y_;
     w = w_;
     h = h_;
+  }
+  
+  void set_label(String label_) {
+    label = label_;
   }
 
   PVector mouse_over() {
@@ -36,11 +42,14 @@ class Element {
     if (mouse_over() == null) {
       fill(0);
     } else {
-      fill(255);
+      fill(150);
     }
     stroke(255);
     strokeWeight(1);
     rectMode(CORNER);
     rect(x, y, w, h);
+    textAlign(CENTER, CENTER);
+    fill(255);
+    text(label, x, y, w, h);
   }
 }
