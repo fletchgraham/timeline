@@ -40,7 +40,7 @@ class Element {
     if (mouse_over() == null) {
       noFill();
     } else {
-      fill(150);
+      fill(80);
     }
     noStroke();
     rectMode(CORNER);
