@@ -45,8 +45,35 @@ class Element {
     noStroke();
     rectMode(CORNER);
     rect(x, y, w, h, em/2);
-    textAlign(CENTER, CENTER);
+  }
+}
+
+class Item extends Element {
+  // a visual element that displays a key value pair.
+  String value = "";
+  
+  Item(UI parent_, String label_) {
+    super(parent_);
+    label = label_;
+  }
+  
+  void set_value(String value_) {
+    value = value_;
+  }
+  
+  void render() {
+    super.render();
+    textAlign(LEFT, CENTER);
     fill(255);
-    text(label, x, y, w, h);
+    text(label + ":", x+em, y, w-2*em, h);
+    textAlign(RIGHT, CENTER);
+    text(value, x+em, y, w-2*em, h);
+  }
+  
+}
+
+class Property extends Item {
+  Property(UI parent_, String label_) {
+    super(parent_, label_);
   }
 }

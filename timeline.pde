@@ -15,9 +15,9 @@ TextBox txt1;
 
 // initiate UI:
 UI ui;
-Element client_indicator;
-Element project_indicator;
-Element task_indicator;
+Property client_indicator;
+Item project_indicator;
+Item task_indicator;
 
 void setup() {
   size(600, 800);
@@ -53,9 +53,9 @@ void setup() {
   
   // create UI:
   ui = new UI();
-  client_indicator = new Element(ui);
-  project_indicator = new Element(ui);
-  task_indicator = new Element(ui);
+  client_indicator = new Property(ui, "Client");
+  project_indicator = new Item(ui, "Project");
+  task_indicator = new Item(ui, "Task");
 }
 
 void draw() {
@@ -78,10 +78,10 @@ void draw() {
   
   Frame f = frames.selection();
   if (f != null) {
-    client_indicator.set_label(frames.selection().client);
-    project_indicator.set_label(frames.selection().project);
+    client_indicator.set_value(frames.selection().client);
+    project_indicator.set_value(frames.selection().project);
     if (f.task != null) {
-      task_indicator.set_label(frames.selection().task);
+      task_indicator.set_value(frames.selection().task);
     }
   ui.render();
   }
