@@ -52,7 +52,7 @@ void draw() {
     z = 1200;
   }
   
-  background(50);
+  background(0);
   draw_timeline();
   frames.render();
   draw_debug();
