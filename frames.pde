@@ -81,6 +81,7 @@ class Frames {
       fr.setFloat("x2", f.x2);
       fr.setString("client", f.client);
       fr.setString("project", f.project);
+      fr.setString("task", f.task);
       fr.setString("uuid", f.uuid);
 
       model.append(fr);

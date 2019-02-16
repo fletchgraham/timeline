@@ -6,6 +6,7 @@ class Frame {
   boolean selected;
   String client;
   String project;
+  String task;
   String uuid;
   int h = 105, s = 0, b = 255;
 
@@ -17,6 +18,7 @@ class Frame {
     selected = true;
     client = "Client";
     project = "Project";
+    task = "Task";
     UUID myID = UUID.randomUUID();
     uuid = myID.toString();
   }
@@ -28,6 +30,7 @@ class Frame {
     stop = json.getInt("stop");
     client = json.getString("client");
     project = json.getString("project");
+    task = json.getString("task");
     selected = false;
   }
 
