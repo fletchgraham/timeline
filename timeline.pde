@@ -12,6 +12,11 @@ boolean editingProject;
 boolean first = true;
 TextBox txt1;
 
+
+// initiate UI:
+UI ui;
+Element test_element;
+
 void setup() {
   size(600, 800);
   //pixelDensity(displayDensity());
@@ -43,6 +48,11 @@ void setup() {
   color_picker = new ColorPicker();
   
   txt1 = new TextBox("testing");
+  
+  // create UI:
+  ui = new UI();
+  test_element = new Element(ui);
+  test_element.place(width - 216, 16, 200, 50);
 }
 
 void draw() {
@@ -60,6 +70,10 @@ void draw() {
     txt1.setDims(width/2, height/4, width*.8);
     txt1.render();
   }
+  
+  // render UI:
+  test_element.place(width - 216, 16, 200, 50);
+  ui.render();
   
   // pick color
   if (show_spectrum) {
