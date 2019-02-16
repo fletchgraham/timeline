@@ -75,9 +75,9 @@ void draw() {
   }
   
   // render UI:
-  client_indicator.place(width - 216, 16, 200, 50);
-  project_indicator.place(width - 216, 116, 200, 50);
-  task_indicator.place(width - 216, 216, 200, 50);
+  client_indicator.place(width - 216, 16, 200, 2*em);
+  project_indicator.place(width - 216, 2*em + 32, 200, 2*em);
+  task_indicator.place(width - 216, 4*em + 16*3, 200, 2 * em);
   
   Frame f = frames.selection();
   if (f != null) {
