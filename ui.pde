@@ -6,6 +6,7 @@ class UI {
   float h;
   float line_height;
   float margin;
+  Frame active_frame;
   
   void style() {
      margin = 16;

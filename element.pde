@@ -5,8 +5,6 @@ class Element {
   float y = 10;
   float w = 100;
   float h = 100;
-  
-  String label = "";
 
   Element(UI parent_) {
     parent = parent_;
@@ -20,10 +18,6 @@ class Element {
     h = h_;
   }
   
-  void set_label(String label_) {
-    label = label_;
-  }
-
   PVector mouse_over() {
     if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
       float x_percent = (mouseX - x)/ w;
@@ -48,32 +42,34 @@ class Element {
   }
 }
 
-class Item extends Element {
-  // a visual element that displays a key value pair.
+class Property extends Element {
+  // a visual element that displays a key value pair of a frame.
+  String property = "";
   String value = "";
   
-  Item(UI parent_, String label_) {
+  Property(UI parent_, String property_) {
     super(parent_);
-    label = label_;
-  }
-  
-  void set_value(String value_) {
-    value = value_;
+    property = property_;
   }
   
   void render() {
+    Frame f = frames.selection();
+    if (f != null) {
+      String v = f.get_value(property);
+      if (v != null) {
+        value = f.get_value(property);
+      } else {
+        value = "";
+      }
+    } else {
+      value = "";
+    }
     super.render();
     textAlign(LEFT, CENTER);
     fill(255);
-    text(label + ":", x+em, y, w-2*em, h);
+    text(property + ":", x+em, y, w-2*em, h);
     textAlign(RIGHT, CENTER);
     text(value, x+em, y, w-2*em, h);
   }
   
-}
-
-class Property extends Item {
-  Property(UI parent_, String label_) {
-    super(parent_, label_);
-  }
 }
