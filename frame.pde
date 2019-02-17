@@ -31,6 +31,9 @@ class Frame {
     client = json.getString("client");
     project = json.getString("project");
     task = json.getString("task");
+    if (task == null) {
+      task = "";
+    }
     selected = false;
   }
   
@@ -130,8 +133,9 @@ class Frame {
       fill(255);
       textAlign(LEFT);
       textSize(em);
-      text(client, x1 * width + pad, px(start)-em-pad);
-      text(project, x1 * width + pad, px(start)-pad);
+      text(client, x1 * width + pad, px(start)-2*em-pad);
+      text(project, x1 * width + pad, px(start)-em-pad);
+      text(task, x1 * width + pad, px(start)-pad);
     }
   }
 }

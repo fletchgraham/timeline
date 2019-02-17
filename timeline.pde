@@ -13,8 +13,7 @@ String active_property;
 boolean first = true;
 TextBox txt1;
 
-
-// initiate UI:
+// initilize UI:
 UI ui;
 Title frame_header;
 Property client_indicator;
@@ -56,7 +55,7 @@ void setup() {
   
   // create UI:
   ui = new UI();
-  frame_header = new Title(ui, "Frame");
+  frame_header = new Title(ui, "Frame Properties");
   client_indicator = new Property(ui, "Client");
   project_indicator = new Property(ui, "Project");
   task_indicator = new Property(ui, "Task");

@@ -10,7 +10,7 @@ class UI {
   
   void style() {
      margin = 16;
-     w = width/3;
+     w = width * 3/8;
      x = width - w - margin;
      y = margin;
      line_height = 2*em;
