@@ -129,13 +129,11 @@ class Frame {
     rectMode(CORNERS); 
     rect(x1*width, px(start), x2*width, px(stop), em/2);
 
-    if ((tall() > em * 2 + pad * 2) || (selected)) {
+    if ((tall() > em + pad) || (selected)) {
       fill(255);
       textAlign(LEFT);
       textSize(em);
-      text(client, x1 * width + pad, px(start)-2*em-pad);
-      text(project, x1 * width + pad, px(start)-em-pad);
-      text(task, x1 * width + pad, px(start)-pad);
+      text(client + ", " + project + ", " + task, x1 * width + pad, px(start)-pad);
     }
   }
 }
