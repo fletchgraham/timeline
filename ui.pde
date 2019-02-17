@@ -13,7 +13,7 @@ class UI {
      w = width * 3/8;
      x = width - w - margin;
      y = margin;
-     line_height = 2*em;
+     line_height = 1.5*em;
   }
 
   void render() {

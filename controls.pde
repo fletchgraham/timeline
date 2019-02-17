@@ -84,7 +84,7 @@ void handleEdits() {
 
   Frame f = frames.selection();
 
-  if (!(editingClient || editingProject)) {
+  if (!(editingClient || editingProject || editingTask)) {
     editingClient = true;
     txt1.label = "Edit Client:";
     txt1.textbox = f.client;
@@ -100,6 +100,14 @@ void handleEdits() {
   } else if (editingProject) {
     editingProject = false;
     f.project = txt1.textbox;
+    txt1.label = "Edit Task:";
+    txt1.textbox = f.task;
+    frames.saveJSON("data/frames.json");
+    editingTask = true;
+    first = true;
+  } else if (editingTask) {
+    editingTask = false;
+    f.task = txt1.textbox;
     frames.saveJSON("data/frames.json");
   }
 }
@@ -110,7 +118,7 @@ void keyPressed() {
     handleEdits();
   }
 
-  else if (editingClient || editingProject) {
+  else if (editingClient || editingProject || editingTask) {
     if (first) {
        txt1.textbox = "";
        first = false;

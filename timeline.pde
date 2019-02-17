@@ -9,6 +9,7 @@ ColorPicker color_picker;
 boolean show_spectrum;
 boolean editingClient;
 boolean editingProject;
+boolean editingTask;
 String active_property;
 boolean first = true;
 TextBox txt1;
@@ -31,6 +32,7 @@ void setup() {
   
   editingClient = false;
   editingProject = false;
+  editingTask = false;
   show_spectrum = false;
   colorMode(HSB);
 
@@ -80,7 +82,7 @@ void draw() {
   current.update();
   frames.render();
   draw_debug();
-  if (editingClient || editingProject){
+  if (editingClient || editingProject || editingTask){
     txt1.setDims(width/2, height/4, width*.8);
     txt1.render();
   }
