@@ -42,6 +42,23 @@ class Element {
   }
 }
 
+class Title extends Element {
+  // like a header above a section of properties.
+  String title;
+  
+  Title(UI parent_, String title_) {
+    super(parent_);
+    title = title_;
+  }
+  
+  void render() {
+    super.render();
+    textAlign(CENTER, CENTER);
+    fill(255);
+    text(title, x+em, y, w-2*em, h);
+  }
+}
+
 class Property extends Element {
   // a visual element that displays a key value pair of a frame.
   String property = "";

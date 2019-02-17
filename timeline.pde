@@ -16,9 +16,11 @@ TextBox txt1;
 
 // initiate UI:
 UI ui;
+Title frame_header;
 Property client_indicator;
 Property project_indicator;
 Property task_indicator;
+Title project_header;
 
 void setup() {
   size(600, 800);
@@ -54,9 +56,11 @@ void setup() {
   
   // create UI:
   ui = new UI();
+  frame_header = new Title(ui, "Frame");
   client_indicator = new Property(ui, "Client");
   project_indicator = new Property(ui, "Project");
   task_indicator = new Property(ui, "Task");
+  project_header = new Title(ui, "Project");
 }
 
 void draw() {
