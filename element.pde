@@ -60,7 +60,7 @@ class Title extends Element {
 }
 
 class Property extends Element {
-  // a visual element that displays a key value pair of a frame.
+  // a visual element that displays values of propertys for the current frame.
   String property = "";
   String value = "";
   

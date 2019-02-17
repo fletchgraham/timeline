@@ -13,20 +13,6 @@ class Frames {
     return sel;
   }
 
-  float projectHours() {
-    int pdur = 0;
-    if (selection() != null) {
-      String pro = selection().project;
-      for (int i = 0; i < frames.size(); i++) {
-        Frame f = frames.get(i);
-        if (f.project.equals(pro)) {
-          pdur += f.duration();
-        }
-      }
-    }
-    return ((float)pdur)/3600;
-  }
-
   void loadColors(String location) {
     try {
     colors = loadJSONObject(location);

@@ -22,6 +22,7 @@ Property client_indicator;
 Property project_indicator;
 Property task_indicator;
 Title project_header;
+Property total_duration;
 
 void setup() {
   size(800, 1000);
@@ -64,6 +65,7 @@ void setup() {
   project_indicator = new Property(ui, "Project");
   task_indicator = new Property(ui, "Task");
   project_header = new Title(ui, "Project");
+  total_duration = new Property(ui, "Total Duration");
 }
 
 void draw() {
