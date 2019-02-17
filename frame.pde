@@ -36,21 +36,6 @@ class Frame {
     }
     selected = false;
   }
-  
-  String get_value(String property) {
-    if (property == "Client") {
-      return client;
-    }
-    else if (property == "Project") {
-      return project;
-    }
-    else if (property == "Task") {
-      return task;
-    }
-    else {
-      return "test";
-    }
-  }
 
   void setColor(int h_, int s_, int b_) {
     h = h_;

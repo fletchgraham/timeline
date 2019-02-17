@@ -13,6 +13,8 @@ String active_property;
 boolean first = true;
 TextBox txt1;
 
+Current current;
+
 // initilize UI:
 UI ui;
 Title frame_header;
@@ -22,7 +24,7 @@ Property task_indicator;
 Title project_header;
 
 void setup() {
-  size(600, 800);
+  size(800, 1000);
   //pixelDensity(displayDensity());
   surface.setResizable(true);
   
@@ -53,6 +55,8 @@ void setup() {
   
   txt1 = new TextBox("testing");
   
+  current = new Current();
+  
   // create UI:
   ui = new UI();
   frame_header = new Title(ui, "Frame Properties");
@@ -71,6 +75,7 @@ void draw() {
   
   background(20);
   draw_timeline();
+  current.update();
   frames.render();
   draw_debug();
   if (editingClient || editingProject){
@@ -79,18 +84,15 @@ void draw() {
   }
   
   // render UI:
-  
-  Frame f = frames.selection();
-  
-  if (f != null) {
+  if (current.frame != null) {
     ui.render();
   }
   
   // pick color
   if (show_spectrum) {
     color_picker.render(10, 10, 400, 400);
-    if (f != null) {
-      frames.mapColor(f.client, get(mouseX, mouseY));
+    if (current.frame != null) {
+      frames.mapColor(current.get_value("Client"), get(mouseX, mouseY));
     } 
   }
 }

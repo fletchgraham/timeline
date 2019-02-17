@@ -70,17 +70,7 @@ class Property extends Element {
   }
   
   void render() {
-    Frame f = frames.selection();
-    if (f != null) {
-      String v = f.get_value(property);
-      if (v != null) {
-        value = f.get_value(property);
-      } else {
-        value = "";
-      }
-    } else {
-      value = "";
-    }
+    value = current.get_value(property);
     super.render();
     textAlign(LEFT, CENTER);
     fill(255);
