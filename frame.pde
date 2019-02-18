@@ -34,7 +34,7 @@ class Frame {
     tags = json.getJSONArray("tags");
     if (tags == null) {
        tags = new JSONArray();
-       tags.append("Tag");
+       tags.append("misc");
     }
     selected = false;
   }
