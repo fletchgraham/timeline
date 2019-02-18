@@ -85,7 +85,7 @@ void draw() {
     report_header.set_title(current.client() + " " + current.project() + " Report");
     for (String task : current.tasks()) {
       Property report_task = new Property(ui, task);
-      report_task.set_value("test");
+      report_task.set_value(current.task_duration(task));
     }
     report_duration.set_value(current.project_duration());
     ui.render();

@@ -46,6 +46,17 @@ class Current {
     }
     return tasks;
   }
+  
+  String task_duration(String task) {
+    int duration = 0;
+    for (int i = 0; i < frames.frames.size(); i++) {
+      Frame f = frames.frames.get(i);
+      if (f.project.equals(frame.project) && f.client.equals(frame.client) && f.task.equals(task)) {
+        duration += f.duration();
+      }
+    }
+    return String.valueOf(((float)duration)/3600);
+  }
 
   String project_duration() {
     int pdur = 0;
