@@ -100,8 +100,14 @@ void handleEdits() {
   } else if (editingProject) {
     editingProject = false;
     f.project = txt1.textbox;
-    txt1.label = "Edit Task:";
-    txt1.textbox = f.tags.toString();
+    txt1.label = "Edit Tags:";
+    txt1.textbox = "";
+    for (int i = 0; i < f.tags.size(); i++) {
+       txt1.textbox += f.tags.get(i);
+       if (i < f.tags.size() -1) {
+         txt1.textbox += ", ";
+       }
+    }
     frames.saveJSON("data/frames.json");
     editingTask = true;
     first = true;
