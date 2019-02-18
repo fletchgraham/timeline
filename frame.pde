@@ -31,12 +31,11 @@ class Frame {
     stop = json.getInt("stop");
     client = json.getString("client");
     project = json.getString("project");
-    tags = new JSONArray();
-    String task = json.getString("task");
-    if (task == null || task.equals("")) {
-      task = "misc";
+    tags = json.getJSONArray("tags");
+    if (tags == null) {
+       tags = new JSONArray();
+       tags.append("Tag");
     }
-    tags.append(task);
     selected = false;
   }
 
