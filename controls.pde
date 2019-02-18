@@ -101,13 +101,17 @@ void handleEdits() {
     editingProject = false;
     f.project = txt1.textbox;
     txt1.label = "Edit Task:";
-    txt1.textbox = f.task;
+    txt1.textbox = f.tags.toString();
     frames.saveJSON("data/frames.json");
     editingTask = true;
     first = true;
   } else if (editingTask) {
     editingTask = false;
-    f.task = txt1.textbox;
+    f.tags = new JSONArray();
+    String[] box = split(txt1.textbox, ", ");
+    for (int i = 0; i < box.length; i++) {
+       f.tags.append(box[i]); 
+    }
     frames.saveJSON("data/frames.json");
   }
 }

@@ -6,7 +6,7 @@ class Frame {
   boolean selected;
   String client;
   String project;
-  String task;
+  JSONArray tags;
   String uuid;
   int h = 105, s = 0, b = 255;
 
@@ -18,7 +18,8 @@ class Frame {
     selected = true;
     client = "Client";
     project = "Project";
-    task = "Task";
+    tags = new JSONArray();
+    tags.append("Tags");
     UUID myID = UUID.randomUUID();
     uuid = myID.toString();
   }
@@ -30,10 +31,12 @@ class Frame {
     stop = json.getInt("stop");
     client = json.getString("client");
     project = json.getString("project");
-    task = json.getString("task");
+    tags = new JSONArray();
+    String task = json.getString("task");
     if (task == null || task.equals("")) {
       task = "misc";
     }
+    tags.append(task);
     selected = false;
   }
 
@@ -113,12 +116,18 @@ class Frame {
     fill(h, s, b);
     rectMode(CORNERS); 
     rect(x1*width, px(start), x2*width, px(stop), em/2);
+    
+    String readout = client;
+    readout += ", " + project;
+    for (int i=0; i < tags.size(); i++) {
+      readout += ", " + tags.getString(i);
+    }
 
     if ((tall() > em + pad) || (selected)) {
       fill(255);
       textAlign(LEFT);
       textSize(em);
-      text(client + ", " + project + ", " + task, x1 * width + pad, px(start)-pad);
+      text(readout, x1 * width + pad, px(start)-pad);
     }
   }
 }
