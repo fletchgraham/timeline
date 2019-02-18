@@ -12,20 +12,6 @@ class Current {
     frame = frames.selection();
   }
 
-  String get_value(String property) {
-    if (property == "Client") {
-      return client();
-    } else if (property == "Project") {
-      return project();
-    } else if (property == "Task") {
-      return task();
-    } else if (property == "Total Duration") {
-      return project_duration();
-    } else {
-      return "";
-    }
-  }
-
   String client() {
     if (frame != null) {
       return frame.client;

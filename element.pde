@@ -44,11 +44,14 @@ class Element {
 
 class Title extends Element {
   // like a header above a section of properties.
-  String title;
+  String title = "";
   
-  Title(UI parent_, String title_) {
+  Title(UI parent_) {
     super(parent_);
-    title = title_;
+  }
+  
+  void set_title(String title_) {
+    title = title_; 
   }
   
   void render() {
@@ -69,8 +72,11 @@ class Property extends Element {
     property = property_;
   }
   
+  void set_value(String value_) {
+    value = value_; 
+  }
+  
   void render() {
-    value = current.get_value(property);
     super.render();
     textAlign(LEFT, CENTER);
     fill(255);

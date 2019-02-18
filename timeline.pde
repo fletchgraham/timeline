@@ -18,12 +18,10 @@ Current current;
 
 // initilize UI:
 UI ui;
-Title frame_header;
-Property client_indicator;
-Property project_indicator;
-Property task_indicator;
-Title project_header;
-Property total_duration;
+Title report_header;
+Property report_name;
+Property report_client;
+Property report_duration;
 
 void setup() {
   size(800, 1000);
@@ -62,12 +60,10 @@ void setup() {
   
   // create UI:
   ui = new UI();
-  frame_header = new Title(ui, "Frame Properties");
-  client_indicator = new Property(ui, "Client");
-  project_indicator = new Property(ui, "Project");
-  task_indicator = new Property(ui, "Task");
-  project_header = new Title(ui, "Project");
-  total_duration = new Property(ui, "Total Duration");
+  report_header = new Title(ui);
+  report_name = new Property(ui, "Name");
+  report_client = new Property(ui, "Client");
+  report_duration = new Property(ui, "Total Duration");
 }
 
 void draw() {
@@ -89,6 +85,10 @@ void draw() {
   
   // render UI:
   if (current.frame != null) {
+    report_header.set_title(current.client() + " " + current.project() + " Report");
+    report_name.set_value(current.project());
+    report_client.set_value(current.client());
+    report_duration.set_value(current.project_duration());
     ui.render();
   }
   
@@ -96,7 +96,7 @@ void draw() {
   if (show_spectrum) {
     color_picker.render(10, 10, 400, 400);
     if (current.frame != null) {
-      frames.mapColor(current.get_value("Client"), get(mouseX, mouseY));
+      frames.mapColor(current.client(), get(mouseX, mouseY));
     } 
   }
 }
