@@ -36,13 +36,23 @@ class Current {
     }
   }
 
+  ArrayList<String> tasks() {
+    ArrayList<String> tasks = new ArrayList<String>();
+    for (int i = 0; i < frames.frames.size(); i++) {
+      Frame f = frames.frames.get(i);
+      if (f.project.equals(frame.project) && f.client.equals(frame.client) && !(tasks.contains(f.task))) {
+        tasks.add(f.task);
+      }
+    }
+    return tasks;
+  }
+
   String project_duration() {
     int pdur = 0;
     if (frame != null) {
-      String pro = frame.project;
       for (int i = 0; i < frames.frames.size(); i++) {
         Frame f = frames.frames.get(i);
-        if (f.project.equals(pro)) {
+        if (f.project.equals(frame.project) && f.client.equals(frame.client)) {
           pdur += f.duration();
         }
       }

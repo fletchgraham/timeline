@@ -31,8 +31,8 @@ class Frame {
     client = json.getString("client");
     project = json.getString("project");
     task = json.getString("task");
-    if (task == null) {
-      task = "";
+    if (task == null || task.equals("")) {
+      task = "misc";
     }
     selected = false;
   }

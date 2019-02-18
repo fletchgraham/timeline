@@ -19,8 +19,6 @@ Current current;
 // initilize UI:
 UI ui;
 Title report_header;
-Property report_name;
-Property report_client;
 Property report_duration;
 
 void setup() {
@@ -60,10 +58,6 @@ void setup() {
   
   // create UI:
   ui = new UI();
-  report_header = new Title(ui);
-  report_name = new Property(ui, "Name");
-  report_client = new Property(ui, "Client");
-  report_duration = new Property(ui, "Total Duration");
 }
 
 void draw() {
@@ -84,10 +78,15 @@ void draw() {
   }
   
   // render UI:
+  ui.elements.clear();
   if (current.frame != null) {
+    report_header = new Title(ui);
+    report_duration = new Property(ui, "Total Duration");
     report_header.set_title(current.client() + " " + current.project() + " Report");
-    report_name.set_value(current.project());
-    report_client.set_value(current.client());
+    for (String task : current.tasks()) {
+      Property report_task = new Property(ui, task);
+      report_task.set_value("test");
+    }
     report_duration.set_value(current.project_duration());
     ui.render();
   }
