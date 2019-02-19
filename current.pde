@@ -3,6 +3,7 @@ class Current {
   // write data to the selected frame
 
   Frame frame;
+  DecimalFormat rounded = new DecimalFormat("#.#");
 
   void update() {
     frame = frames.selection();
@@ -63,7 +64,7 @@ class Current {
         }
       }
     }
-    return String.valueOf(((float)duration)/3600);
+    return String.valueOf(rounded.format(((float)duration)/3600));
   }
 
   String project_duration() {
@@ -75,7 +76,7 @@ class Current {
           pdur += f.duration();
         }
       }
-      return String.valueOf(((float)pdur)/3600);
+      return String.valueOf(rounded.format(((float)pdur)/3600));
     } else {
       return "";
     }
