@@ -80,4 +80,48 @@ class Current {
       return "";
     }
   }
+
+  void select_next() {
+    if (frame != null) {
+      Frame next = null;
+      int last_diff = 999999999;
+      for (int i=0; i < frames.frames.size(); i++) {
+        Frame test = frames.frames.get(i);
+        int diff = test.start - frame.start;
+        if (diff > 0 && abs(diff) < last_diff) {
+          if (test.project.equals(frame.project) && test.client.equals(frame.client)) {
+            next = test;
+            last_diff = diff;
+          }
+        }
+      }
+      if (next != null) {
+        frame.selected = false;
+        next.selected = true;
+        off = next.start;
+      }
+    }
+  }
+
+  void select_previous() {
+    if (frame != null) {
+      Frame previous = null;
+      int last_diff = 999999999;
+      for (int i=0; i < frames.frames.size(); i++) {
+        Frame test = frames.frames.get(i);
+        int diff = frame.start - test.start;
+        if (diff > 0 && abs(diff) < last_diff) {
+          if (test.project.equals(frame.project) && test.client.equals(frame.client)) {
+            previous = test;
+            last_diff = diff;
+          }
+        }
+      }
+      if (previous != null) {
+        frame.selected = false;
+        previous.selected = true;
+        off = previous.start;
+      }
+    }
+  }
 }

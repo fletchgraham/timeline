@@ -144,6 +144,10 @@ void keyPressed() {
       frames.saveJSON(saveLocation);
     } else if (keyCode == ALT) {
       show_spectrum = true;
+    } else if (keyCode == UP) {
+      current.select_next();
+    } else if (keyCode == DOWN) {
+      current.select_previous();
     }
   }
 }
