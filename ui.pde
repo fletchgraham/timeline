@@ -12,13 +12,13 @@ class UI {
      margin = 16;
      w = width * 3/8;
      x = width - w - margin;
-     y = margin;
+     y = height - h - margin;
      line_height = 1.5*em;
   }
 
   void render() {
-    style();
     h = (margin + line_height) * elements.size() + margin;
+    style();
     rectMode(CORNER);
     fill(20);
     strokeWeight(1);
