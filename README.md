@@ -1,5 +1,5 @@
 # Timeline
-A simple visual solution to time tracking.
+A simple visual solution to time tracking on your desktop.
 
 ## Overview:
 Draw out blocks of time (called frames) on an infinite vertical timeline. Label your frames with a client, project, and tags. Give each client a unique color. See a report describing the total project time, and the time spent on each tag. Useful for planning your day or tracking your time.
